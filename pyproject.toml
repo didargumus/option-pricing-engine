@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "optionpricer"
+version = "1.0.0"
+description = "From-scratch derivatives pricing: Black–Scholes, binomial trees, Crank–Nicolson PDE, Monte Carlo with variance reduction, and Heston calibration."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Eda", email = "didargumus3807@gmail.com" }]
+keywords = ["quantitative finance", "option pricing", "heston", "monte carlo", "black-scholes", "derivatives"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Office/Business :: Financial :: Investment",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "pandas>=2.0"]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.7"]
+data = ["yfinance>=0.2"]
+dev = ["pytest>=7", "matplotlib>=3.7", "ruff>=0.4", "QuantLib>=1.30"]
+
+[project.urls]
+Repository = "https://github.com/didargumus/option-pricing-engine"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 150
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E741"]
